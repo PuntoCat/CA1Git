@@ -160,6 +160,7 @@ class Book(db.Model):
         self.num_pages = num_pages
         self.pub_id = pub_id
 
+
     def __repr__(self):
         return '{} by {}'.format(self.title, self.author)
 
