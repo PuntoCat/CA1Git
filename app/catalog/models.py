@@ -1,8 +1,6 @@
-from app import db  # from the app package __init__
+from app import db
 from datetime import datetime
 
-
-# PUBLICATION TABLE
 class Publication(db.Model):
     __tablename__ = 'publication'
 
@@ -13,13 +11,11 @@ class Publication(db.Model):
         self.name = name
 
     def __repr__(self):
-        return 'The Publisher is {}'.format(self.name)
+        return 'Publisher is {}'.format(self.name)
 
 
-# BOOKS TABLE
 class Book(db.Model):
     __tablename__ = 'book'
-
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(500), nullable=False, index=True)
     author = db.Column(db.String(350))
@@ -29,7 +25,7 @@ class Book(db.Model):
     num_pages = db.Column(db.Integer)
     pub_date = db.Column(db.DateTime, default=datetime.utcnow())
 
-    # ESTABLISH RELATIONSHIP
+    # Relationship
     pub_id = db.Column(db.Integer, db.ForeignKey('publication.id'))
 
     def __init__(self, title, author, avg_rating, book_format, image, num_pages, pub_id):
